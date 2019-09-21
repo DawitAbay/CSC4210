@@ -308,15 +308,15 @@ def robotControl(trigger, simultaneous_launcher, motor_command_queue, sensor_que
         elif move is True and my_distance_sensor.read_mm() < 500:
             gopigo3_robot.stop()
             command = "stop"
-            print("Distance from object below 500mm. Capturing photo of object")
+            print("Distance from object below 500mm")
             with picamera.PiCamera() as camera:
                 print("Photo count: " + str(photo_count))
-                print("Picture captured. Steer me clear!")
+                print("Pic captured.")
                 camera.resolution = (640, 480)
                 camera.rotation = 180
                 camera.capture(output, format = 'rgb', use_video_port = True)
                 img = Image.fromarray(output)
-                img.save("/home/jupyter/Module2/Assignment/module2_problem2_"+str(photo_count)+".jpg") 
+                img.save("./module2_problem2_"+str(photo_count)+".jpg") 
                 photo_count += 1
 
            
